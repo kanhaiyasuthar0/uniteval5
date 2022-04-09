@@ -49,8 +49,9 @@ const Register = () => {
             let res2 = await res1.json();
             console.log(res2);
             let userd = {...res2}
-            dispatch(addUser(userd))
-           
+            dispatch(addUser(userd));
+            alert("Employee Created successfully")
+          
         } catch (error) {
             console.log(error);
         }

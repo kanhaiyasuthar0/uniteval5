@@ -7,11 +7,11 @@ const Employees = () => {
     const [all , setAll] = useState([])
     let dispatch = useDispatch()
     let navigate = useNavigate();
-   const allusers =  useSelector((state)=>state.allusers);
-
-   
-   useEffect(()=>{
+    const allusers =  useSelector((state)=>state.allusers);
     
+
+    useEffect(()=>{
+        setAll([...allusers])
    },[])
    const handleemp = (id)=>{
     navigate(`/employee/${id}`)
@@ -21,7 +21,7 @@ const Employees = () => {
     <div>
         {all.map((user)=>{ 
            <div onClick={()=>handleemp(user.id)} >
-            {console.log(user)}
+          
             <h1>{user.name}</h1>
             <h1>{user.age}</h1>
             <h1>{user.gender}</h1>

@@ -1,8 +1,11 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { islogin, login } from '../redux/action'
 
 const Navbar = () => {
+    
+    const dispatch = useDispatch();
   let isLogin =   useSelector((state)=>state.isLogin)
   return (
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -23,9 +26,12 @@ const Navbar = () => {
             <Link class="nav-link" to="/employeecreate">Create Employee</Link>
           </li>
           {!isLogin  ? <li class="nav-item">
-            <Link to="login" class="nav-link">Login</Link>
+            <Link to="/login" class="nav-link">Login</Link>
           </li> : <li class="nav-item">
-            <Link to="login" class="nav-link">Logout</Link>
+            <Link onClick={()=>{
+                 dispatch(login(""));
+                 dispatch(islogin(false));
+            } } to="/login" class="nav-link">Logout</Link>
           </li>}
           
           {/* <li class="nav-item">
